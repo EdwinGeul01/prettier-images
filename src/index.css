@@ -17,7 +17,9 @@ html body {
 }
 
 .navbar {
-  background-color: #292929;
   padding: 10px;
-  
+}
+
+image {
+  user-select: none !important;
 }

@@ -9,18 +9,8 @@ function App() {
   const { useFramesDrawer } = useMainContext();
 
   return (
-    <Box
-      overflow={"hidden"}
-      bgColor={"colorPalette.solid"}
-      h={"full"}
-      w={"full"}
-    >
-      <Flex
-        w={"full"}
-        h={"full"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
+    <Box overflow={"hidden"} bgColor={"#E8E8E8"} h={"full"} w={"full"}>
+      <Flex w={"full"} h={"full"} justifyContent={"center"} alignItems={"cter"}>
         {/* <FileUploadForm/> */}
         <ImageToolkit />
         <Float zIndex={10000} asChild placement={"bottom-center"} offsetY={10}>
@@ -55,6 +45,28 @@ function App() {
                 </Button>
               </Tooltip>
             </Flex>
+          </Box>
+        </Float>
+        <Float
+          zIndex={10000}
+          asChild
+          ml={50}
+          placement={"bottom-start"}
+          offsetY={10}
+        >
+          <Box
+            bgColor={"whiteAlpha.950"}
+            w={"70px"}
+            h={"55px"}
+            borderRadius={"10px"}
+            p={1}
+          >
+            <Flex
+              w={"full"}
+              h={"full"}
+              justifyContent={"left"}
+              alignItems={"start"}
+            ></Flex>
           </Box>
         </Float>
       </Flex>
