@@ -1,7 +1,6 @@
-import { Box, Image, Text } from "@chakra-ui/react";
-import penguin from "#public/penguin.png";
-import useStoreOptions from "../../../hook/useOptions";
+import { Box, Text } from "@chakra-ui/react";
 import { Layer, Stage, type Rect } from "react-konva";
+import useStoreOptions from "../../../hook/useOptions";
 
 interface FrameCardProps {
   FrameType: React.ElementType<React.ComponentProps<typeof Rect>>;
@@ -20,8 +19,9 @@ export const FrameCard: React.FC<FrameCardProps> = ({ FrameType, name }) => {
       w={"full"}
       h={"200px"}
       p={2}
-      bgColor={"gray.100"}
+      bgColor={"gray.200"}
       cursor={"pointer"}
+      borderRadius={8}
       onClick={handleClick}
     >
       <Stage width={250} height={150}>
@@ -38,7 +38,7 @@ export const FrameCard: React.FC<FrameCardProps> = ({ FrameType, name }) => {
       </Stage>
 
       <Box mt={2}>
-        <Text fontSize={"md"} fontWeight={"bold"}>
+        <Text fontSize={"md"} fontWeight={"bold"} color={"gray.700"}>
           {name}
         </Text>
       </Box>

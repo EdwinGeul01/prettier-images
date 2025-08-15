@@ -1,9 +1,12 @@
 import { Box, Button, Flex, Float, Image } from "@chakra-ui/react";
-import tableFrame from "../public/TablerFrame.svg";
+import tableFrame from "#public/TablerFrame.svg";
+import githubLogo from "#public/github.svg";
 import { FramesDrawer } from "./components/FramesDrawer/FramesDrawer";
 import { Tooltip } from "./components/Tooltip/Tooltip";
 import { useMainContext } from "./context/useMainContext";
 import { ImageToolkit } from "./components/ImageToolkit/ImageToolkit";
+import { ImageUploadButton } from "./components/Image-Upload-Dialog/ImageUploadButton";
+import { ImageUploadProvider } from "./components/Image-Upload-Dialog/context/ImageUploadDialog.context";
 
 function App() {
   const { useFramesDrawer } = useMainContext();
@@ -54,21 +57,25 @@ function App() {
           placement={"bottom-start"}
           offsetY={10}
         >
-          <Box
-            bgColor={"whiteAlpha.950"}
-            w={"70px"}
-            h={"55px"}
-            borderRadius={"10px"}
-            p={1}
-          >
-            <Flex
-              w={"full"}
-              h={"full"}
-              justifyContent={"left"}
-              alignItems={"start"}
-            ></Flex>
+          <Box w={"70px"} h={"55px"} p={1}>
+            <a href="https://github.com/EdwinGeul01/prettier-images">
+              <Image
+                src={githubLogo}
+                w={"full"}
+                h={"full"}
+                p={3}
+                objectFit={"contain"}
+                alt={"github logo"}
+                _hover={{
+                  filter: "brightness(0.4)",
+                }}
+              ></Image>
+            </a>
           </Box>
         </Float>
+        <ImageUploadProvider>
+          <ImageUploadButton />
+        </ImageUploadProvider>
       </Flex>
 
       <FramesDrawer />

@@ -13,6 +13,7 @@ import { BlueFrame } from "./frames/BlueFrame";
 import { NoFrame } from "./frames/NoFrame";
 import { macOsFrame } from "./frames/macosFrame";
 import { macOsFrameBlack } from "./frames/macosFrameBlack";
+import { LinuxFrame } from "./frames/LinuxFrame";
 
 export const FramesDrawer = () => {
   const { useFramesDrawer } = useMainContext();
@@ -48,6 +49,10 @@ export const FramesDrawer = () => {
                 <FrameCard
                   name="MacOs Frame Black"
                   FrameType={macOsFrameBlack}
+                />
+                <FrameCard
+                  name="linux frame"
+                  FrameType={LinuxFrame}
                 />
               </Grid>
             </Drawer.Body>
