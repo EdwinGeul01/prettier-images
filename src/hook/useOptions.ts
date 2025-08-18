@@ -6,11 +6,12 @@ type frameOption = {
   setFrameType: (
     type: React.ElementType<React.ComponentProps<typeof Rect>> | null
   ) => void;
+  // Stage: React.RefObject<Stage | null> | null;
 };
 
-const useStoreOptions = create<frameOption>((set) => ({
+const useImageProperties = create<frameOption>((set) => ({
   TypeFrame: null,
   setFrameType: (type) => set(() => ({ TypeFrame: type })),
 }));
 
-export default useStoreOptions;
+export default useImageProperties;

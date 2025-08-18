@@ -4,10 +4,18 @@ export const macOsFrame = (props: React.ComponentProps<typeof Rect>) => {
   console.log("🚀 ~ macOsFrame ~ props:", props);
   return (
     <>
-      <Rect {...props}
-        shadowEnabled={true} 
-      
-      stroke="white" strokeWidth={10} y={props.y}></Rect>
+      <Rect
+        {...props}
+        shadowEnabled={true}
+        shadowColor="black"
+        shadowBlur={0}
+        shadowOffset={{ x: 0, y: 0 }}
+        shadowOpacity={0.5}
+        stroke="white"
+        strokeWidth={20}
+        y={props.y! - 15}
+        height={props.height! + 15}
+      ></Rect>
       <Line
         points={[props.x! - 5, props.y!, props.x! + props.width! + 5, props.y!]}
         height={39}

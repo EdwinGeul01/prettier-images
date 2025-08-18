@@ -1,12 +1,21 @@
-import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react";
+import { CloseButton, Dialog, Portal } from "@chakra-ui/react";
+import { FileUploadForm } from "../File-Upload/File-Upload";
 import { useImageUploadContext } from "./hook/useImageUploadContext";
 
 export const ImageUploadDialog = () => {
   const { OpenDialog, setOpenDialog } =
     useImageUploadContext()._useImageUploadDialog;
 
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+
   return (
-    <Dialog.Root open={OpenDialog}>
+    <Dialog.Root
+      onEscapeKeyDown={handleClose}
+      onInteractOutside={handleClose}
+      open={OpenDialog}
+    >
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -15,24 +24,11 @@ export const ImageUploadDialog = () => {
               <Dialog.Title>Dialog Title</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+              <FileUploadForm />
             </Dialog.Body>
-            <Dialog.Footer>
-              <Dialog.ActionTrigger asChild>
-                <Button variant="outline">Cancel</Button>
-              </Dialog.ActionTrigger>
-              <Button>Save</Button>
-            </Dialog.Footer>
+
             <Dialog.CloseTrigger asChild>
-              <CloseButton
-                size="sm"
-                onClick={() => {
-                  setOpenDialog(false);
-                }}
-              />
+              <CloseButton size="sm" onClick={handleClose} />
             </Dialog.CloseTrigger>
           </Dialog.Content>
         </Dialog.Positioner>

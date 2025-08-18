@@ -7,17 +7,12 @@ import {
   SegmentGroup,
   Text,
 } from "@chakra-ui/react";
-import { FrameCard } from "./components/FrameCard";
 import { useMainContext } from "../../context/useMainContext";
-import { BlueFrame } from "./frames/BlueFrame";
-import { NoFrame } from "./frames/NoFrame";
-import { macOsFrame } from "./frames/macosFrame";
-import { macOsFrameBlack } from "./frames/macosFrameBlack";
-import { LinuxFrame } from "./frames/LinuxFrame";
+import { BackgroundProperties } from "./properties/BackgroundProperties";
 
-export const FramesDrawer = () => {
-  const { useFramesDrawer } = useMainContext();
-  const { isOpen, setIsOpen } = useFramesDrawer;
+export const BackgroundDrawer = () => {
+  const { useBackgrounDrawer } = useMainContext();
+  const { isOpen, setIsOpen } = useBackgrounDrawer;
 
   return (
     <Drawer.Root
@@ -39,23 +34,18 @@ export const FramesDrawer = () => {
             zIndex={40000}
           >
             <Drawer.Header>
-              <Text>Frames</Text>
+              <Text>Backgrounds</Text>
             </Drawer.Header>
             <Drawer.Body>
-              <SegmentGroup.Root defaultValue="Frames">
+              <SegmentGroup.Root defaultValue="Backgrounds">
                 <SegmentGroup.Indicator />
-                <SegmentGroup.Items items={["Frames"]} />
+                <SegmentGroup.Items items={["Backgrounds", "Properties"]} />
               </SegmentGroup.Root>
-              <Grid templateColumns={"repeat(2, 1fr)"} gap={4} mt={4}>
-                <FrameCard name="No Frame" FrameType={NoFrame} />
-                <FrameCard name="Blue Frame" FrameType={BlueFrame} />
-                <FrameCard name="MacOs Frame" FrameType={macOsFrame} />
-                <FrameCard
-                  name="MacOs Frame Black"
-                  FrameType={macOsFrameBlack}
-                />
-                <FrameCard name="linux frame" FrameType={LinuxFrame} />
+              <Grid templateColumns={"repeat(1, 1fr)"} gap={4} mt={4}>
+                <BackgroundProperties  />
               </Grid>
+
+              <Grid templateColumns={"repeat(2, 1fr)"} gap={4} mt={4}></Grid>
             </Drawer.Body>
             <Drawer.Footer>
               <Button variant="outline" onClick={() => setIsOpen(false)}>

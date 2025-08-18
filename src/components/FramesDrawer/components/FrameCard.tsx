@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Layer, Stage, type Rect } from "react-konva";
-import useStoreOptions from "../../../hook/useOptions";
+import useImageProperties from "../../../hook/useOptions";
 
 interface FrameCardProps {
   FrameType: React.ElementType<React.ComponentProps<typeof Rect>>;
@@ -8,7 +8,7 @@ interface FrameCardProps {
 }
 
 export const FrameCard: React.FC<FrameCardProps> = ({ FrameType, name }) => {
-  const { setFrameType } = useStoreOptions();
+  const { setFrameType } = useImageProperties();
 
   const handleClick = () => {
     setFrameType(FrameType);
