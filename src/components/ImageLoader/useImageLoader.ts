@@ -5,7 +5,8 @@ import useStoreImageOptions from "../../hook/useOptionsImage";
 
 export const useImageLoader = (imageUrl: string) => {
   const { TypeFrame } = useImageProperties();
-  const { setOptionValues,backgroundSize } = useStoreImageOptions();
+  const { setOptionValues, backgroundSize, Background } =
+    useStoreImageOptions();
 
   const stageRef = useRef<Konva.Stage | null>(null);
   const [images, setimages] = useState<HTMLImageElement | null>(null);
@@ -109,7 +110,6 @@ export const useImageLoader = (imageUrl: string) => {
   const imagePositionY = window.innerHeight / 2 - (images?.height || 0) / 2;
   const borderSize = 2;
 
-
   return {
     imageHeight,
     imageWidth,
@@ -121,9 +121,10 @@ export const useImageLoader = (imageUrl: string) => {
     imagePos,
     setimagePos,
     speacialKeyStates,
-    Scale, 
+    Scale,
     stageRef,
     TypeFrame,
-    backgroundSize
+    Background,
+    backgroundSize,
   };
 };

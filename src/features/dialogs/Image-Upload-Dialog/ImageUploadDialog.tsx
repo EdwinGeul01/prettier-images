@@ -1,6 +1,6 @@
 import { CloseButton, Dialog, Portal } from "@chakra-ui/react";
-import { FileUploadForm } from "../File-Upload/File-Upload";
 import { useImageUploadContext } from "./hook/useImageUploadContext";
+import { FileUploadForm } from "../../../components/File-Upload/File-Upload";
 
 export const ImageUploadDialog = () => {
   const { OpenDialog, setOpenDialog } =

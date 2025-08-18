@@ -7,8 +7,13 @@ import {
   SegmentGroup,
   Text,
 } from "@chakra-ui/react";
-import { useMainContext } from "../../context/useMainContext";
+import { useMainContext } from "../../../context/useMainContext";
 import { BackgroundProperties } from "./properties/BackgroundProperties";
+import { BackgroundCard } from "./BackgroundCard/BackgroundCard";
+import { BackgroundRedPurple } from "./Backgrounds/BackgroundRedPurple";
+import { BackgroundPurple } from "./Backgrounds/BackgroundPurple";
+import { BackgroundMany } from "./Backgrounds/BackgroundMany";
+import { BackgroundGreen } from "./Backgrounds/BackgroundGreen";
 
 export const BackgroundDrawer = () => {
   const { useBackgrounDrawer } = useMainContext();
@@ -30,7 +35,7 @@ export const BackgroundDrawer = () => {
         <Drawer.Positioner>
           <Drawer.Content
             borderRadius={"10px"}
-            boxShadow={"dark-lg"}
+            boxShadow={"dark"}
             zIndex={40000}
           >
             <Drawer.Header>
@@ -41,8 +46,26 @@ export const BackgroundDrawer = () => {
                 <SegmentGroup.Indicator />
                 <SegmentGroup.Items items={["Backgrounds", "Properties"]} />
               </SegmentGroup.Root>
-              <Grid templateColumns={"repeat(1, 1fr)"} gap={4} mt={4}>
-                <BackgroundProperties  />
+              <Grid templateColumns={"repeat(2, 1fr)"} gap={4} mt={4}>
+                <BackgroundProperties />
+                <BackgroundCard backgroundName="No Background" />
+
+                <BackgroundCard
+                  Background={BackgroundRedPurple}
+                  backgroundName="Background red purple"
+                />
+                <BackgroundCard
+                  Background={BackgroundPurple}
+                  backgroundName="Background only purple"
+                />
+                <BackgroundCard
+                  Background={BackgroundMany}
+                  backgroundName="Background Many"
+                />
+                <BackgroundCard
+                  Background={BackgroundGreen}
+                  backgroundName="Background Green"
+                />
               </Grid>
 
               <Grid templateColumns={"repeat(2, 1fr)"} gap={4} mt={4}></Grid>

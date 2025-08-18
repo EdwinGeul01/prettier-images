@@ -1,8 +1,9 @@
 import { Box, Button, Flex, Float, Image } from "@chakra-ui/react";
 import { useMainContext } from "../../context/useMainContext";
-import { Tooltip } from "../Tooltip/Tooltip";
 import tableFrame from "#public/TablerFrame.svg";
 import backgroundIco from "#public/backgroundIco.svg";
+import imageEditIco from "#public/toolIco.svg";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
 
 export const OptionsBar = () => {
   const { useFramesDrawer, useBackgrounDrawer } = useMainContext();
@@ -49,6 +50,23 @@ export const OptionsBar = () => {
             >
               <Image
                 src={backgroundIco}
+                objectFit={"contain"}
+                alt={"table frame"}
+                p={2}
+                h={"100%"}
+              />
+            </Button>
+          </Tooltip>
+          <Tooltip content="Image Edit">
+            <Button
+              onClick={() => useBackgrounDrawer.setIsOpen(true)}
+              bgColor={"transparent"}
+              h={"full"}
+              p={0}
+              _hover={{ bgColor: "blackAlpha.400" }}
+            >
+              <Image
+                src={imageEditIco}
                 objectFit={"contain"}
                 alt={"table frame"}
                 p={2}

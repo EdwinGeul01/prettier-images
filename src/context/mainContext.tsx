@@ -1,6 +1,6 @@
 import React from "react";
-import { useFramesDrawer } from "../components/FramesDrawer/useFramesDrawer";
-import { useBackgroundDrawer } from "../components/BackgroundDrawer/useBackgroundDrawer";
+import { useFramesDrawer } from "../features/drawers/FramesDrawer/useFramesDrawer";
+import { useBackgroundDrawer } from "../features/drawers/BackgroundDrawer/useBackgroundDrawer";
 
 interface MainContextProps {
   useFramesDrawer: ReturnType<typeof useFramesDrawer>;

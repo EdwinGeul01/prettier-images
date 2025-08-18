@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FrameCard } from "./components/FrameCard";
-import { useMainContext } from "../../context/useMainContext";
+import { useMainContext } from "../../../context/useMainContext";
 import { BlueFrame } from "./frames/BlueFrame";
 import { NoFrame } from "./frames/NoFrame";
 import { macOsFrame } from "./frames/macosFrame";

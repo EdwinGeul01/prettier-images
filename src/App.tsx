@@ -1,14 +1,14 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { FileUploadForm } from "./components/File-Upload/File-Upload";
-import { FramesDrawer } from "./components/FramesDrawer/FramesDrawer";
 import { GithubReference } from "./components/GithubReference/GithubReference";
-import { ImageUploadButton } from "./components/Image-Upload-Dialog/ImageUploadButton";
-import { ImageUploadProvider } from "./components/Image-Upload-Dialog/context/ImageUploadDialog.context";
 import { ImageToolkit } from "./components/ImageToolkit/ImageToolkit";
-import { OptionsBar } from "./components/OptionsBar/OptionsBar";
 import { SaveImageButton } from "./components/SaveImageButton/SaveImageButton";
+import { BackgroundDrawer } from "./features/drawers/BackgroundDrawer/BackgroundDrawer";
+import { FramesDrawer } from "./features/drawers/FramesDrawer/FramesDrawer";
 import useStoreImageOptions from "./hook/useOptionsImage";
-import { BackgroundDrawer } from "./components/BackgroundDrawer/BackgroundDrawer";
+import { OptionsBar } from "./features/OptionsBar/OptionsBar";
+import { ImageUploadProvider } from "./features/dialogs/Image-Upload-Dialog/context/ImageUploadDialog.context";
+import { ImageUploadButton } from "./features/dialogs/Image-Upload-Dialog/ImageUploadButton";
 
 function App() {
   const { ImageUrl } = useStoreImageOptions();

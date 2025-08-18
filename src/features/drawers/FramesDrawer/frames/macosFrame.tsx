@@ -8,7 +8,7 @@ export const macOsFrame = (props: React.ComponentProps<typeof Rect>) => {
         {...props}
         shadowEnabled={true}
         shadowColor="black"
-        shadowBlur={0}
+        shadowBlur={10}
         shadowOffset={{ x: 0, y: 0 }}
         shadowOpacity={0.5}
         stroke="white"

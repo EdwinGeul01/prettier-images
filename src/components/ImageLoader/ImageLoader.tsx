@@ -1,9 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import type Konva from "konva";
-import React, { useEffect, useRef, useState } from "react";
-import { Group, Image, Layer, Rect, Stage } from "react-konva";
-import useImageProperties from "../../hook/useOptions";
-import useStoreImageOptions from "../../hook/useOptionsImage";
+import React from "react";
+import { Group, Image, Layer, Stage } from "react-konva";
 import { useImageLoader } from "./useImageLoader";
 
 interface ImageLoaderProps {
@@ -24,6 +21,7 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
     borderSize,
     TypeFrame,
     backgroundSize,
+    Background,
   } = useImageLoader(imageUrl);
 
   return (
@@ -44,26 +42,31 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
         >
           <Layer name="image-layer">
             <Group draggable={!speacialKeyStates.space}>
-              <Rect
-                x={(imageRef.current?.x() ?? 0) - backgroundSize}
-                y={(imageRef.current?.y() ?? 0) - backgroundSize}
-                width={imageWidth + backgroundSize * 2}
-                height={imageHeight + backgroundSize * 2}
-                fill={"black"}
-                fillPriority="linear-gradient" // 'color', 'pattern', 'linear-gradient', 'radial-gradient'
-                /* linear-gradient */
-                fillLinearGradientStartPoint={{
-                  x: (imageRef.current?.x() ?? 0) - backgroundSize,
-                  y: (imageRef.current?.y() ?? 0) - backgroundSize,
-                }}
-                fillLinearGradientEndPoint={{
-                  x: (imageRef.current?.x() ?? 0) + imageWidth + backgroundSize,
-                  y:
-                    (imageRef.current?.y() ?? 0) + imageHeight + backgroundSize,
-                }}
-                fillLinearGradientColorStops={[0, "#F54927", 1, "#9C27F5"]}
-              />
-
+              {Background && (
+                <Background
+                  x={(imageRef.current?.x() ?? 0) - backgroundSize}
+                  y={(imageRef.current?.y() ?? 0) - backgroundSize}
+                  width={imageWidth + backgroundSize * 2}
+                  height={imageHeight + backgroundSize * 2}
+                  fill={"black"}
+                  fillPriority="linear-gradient" // 'color', 'pattern', 'linear-gradient', 'radial-gradient'
+                  /* linear-gradient */
+                  fillLinearGradientStartPoint={{
+                    x: (imageRef.current?.x() ?? 0) - backgroundSize,
+                    y: (imageRef.current?.y() ?? 0) - backgroundSize,
+                  }}
+                  fillLinearGradientEndPoint={{
+                    x:
+                      (imageRef.current?.x() ?? 0) +
+                      imageWidth +
+                      backgroundSize,
+                    y:
+                      (imageRef.current?.y() ?? 0) +
+                      imageHeight +
+                      backgroundSize,
+                  }}
+                />
+              )}
               <Image
                 ref={imageRef}
                 image={images!}
@@ -75,7 +78,6 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
                   setimagePos({ x: pos.x, y: pos.y });
                 }}
               />
-
               {TypeFrame && (
                 <TypeFrame
                   x={imagePos.x - borderSize}
