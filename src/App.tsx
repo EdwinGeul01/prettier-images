@@ -9,6 +9,7 @@ import useStoreImageOptions from "./hook/useOptionsImage";
 import { OptionsBar } from "./features/OptionsBar/OptionsBar";
 import { ImageUploadProvider } from "./features/dialogs/Image-Upload-Dialog/context/ImageUploadDialog.context";
 import { ImageUploadButton } from "./features/dialogs/Image-Upload-Dialog/ImageUploadButton";
+import { ImageOptionDrawer } from "./features/drawers/ImageOptionDrawer/ImageOptionDrawer";
 
 function App() {
   const { ImageUrl } = useStoreImageOptions();
@@ -32,6 +33,7 @@ function App() {
 
       <FramesDrawer />
       <BackgroundDrawer />
+      <ImageOptionDrawer />
     </Box>
   );
 }

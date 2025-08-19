@@ -46,8 +46,8 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
                 <Background
                   x={(imageRef.current?.x() ?? 0) - backgroundSize}
                   y={(imageRef.current?.y() ?? 0) - backgroundSize}
-                  width={imageWidth + backgroundSize * 2}
-                  height={imageHeight + backgroundSize * 2}
+                  width={imageRef.current?.getWidth() + backgroundSize * 2}
+                  height={imageRef.current?.getHeight() + backgroundSize * 2}
                   fill={"black"}
                   fillPriority="linear-gradient" // 'color', 'pattern', 'linear-gradient', 'radial-gradient'
                   /* linear-gradient */
@@ -58,11 +58,11 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
                   fillLinearGradientEndPoint={{
                     x:
                       (imageRef.current?.x() ?? 0) +
-                      imageWidth +
+                      imageRef.current?.getWidth() +
                       backgroundSize,
                     y:
                       (imageRef.current?.y() ?? 0) +
-                      imageHeight +
+                      imageRef.current?.getHeight() +
                       backgroundSize,
                   }}
                 />
@@ -82,8 +82,8 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
                 <TypeFrame
                   x={imagePos.x - borderSize}
                   y={imagePos.y - borderSize}
-                  width={imageWidth + borderSize * 2}
-                  height={imageHeight + borderSize * 2}
+                  width={imageRef.current?.getWidth() + borderSize * 2}
+                  height={imageRef.current?.getHeight() + borderSize * 2}
                   stroke="red" // Border color
                   strokeWidth={borderSize}
                 />

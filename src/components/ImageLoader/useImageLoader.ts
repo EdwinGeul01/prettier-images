@@ -29,6 +29,10 @@ export const useImageLoader = (imageUrl: string) => {
     };
 
     setOptionValues({
+      ImageRef: imageRef,
+    });
+
+    setOptionValues({
       Stage: stageRef,
     });
 
@@ -51,14 +55,15 @@ export const useImageLoader = (imageUrl: string) => {
   }, [Scale]);
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    event.preventDefault();
     if (event.key === " ") {
+      event.preventDefault();
       setSpeacialKeyStates((prev) => ({
         ...prev,
         space: true,
       }));
     }
     if (event.key === "Control" || event.key === "Meta") {
+      event.preventDefault();
       setSpeacialKeyStates((prev) => ({
         ...prev,
         control: true,

@@ -18,7 +18,7 @@ export const ImageToolkit = () => {
       ref={layourImageToolkit}
       h={{
         base: "100%",
-        md: "50%",
+        md: "100%",
         lg: "100%",
       }}
       borderRadius={"10px"}

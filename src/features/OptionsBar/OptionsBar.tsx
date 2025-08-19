@@ -3,10 +3,12 @@ import { useMainContext } from "../../context/useMainContext";
 import tableFrame from "#public/TablerFrame.svg";
 import backgroundIco from "#public/backgroundIco.svg";
 import imageEditIco from "#public/toolIco.svg";
+import handGrabIco from "#public/handGrabIco.svg";
 import { Tooltip } from "../../components/Tooltip/Tooltip";
 
 export const OptionsBar = () => {
-  const { useFramesDrawer, useBackgrounDrawer } = useMainContext();
+  const { useFramesDrawer, useBackgrounDrawer, useImageOptionDrawer } =
+    useMainContext();
 
   return (
     <Float zIndex={10000} asChild placement={"bottom-center"} offsetY={10}>
@@ -59,7 +61,7 @@ export const OptionsBar = () => {
           </Tooltip>
           <Tooltip content="Image Edit">
             <Button
-              onClick={() => useBackgrounDrawer.setIsOpen(true)}
+              onClick={() => useImageOptionDrawer.setIsOpen(true)}
               bgColor={"transparent"}
               h={"full"}
               p={0}
@@ -67,6 +69,23 @@ export const OptionsBar = () => {
             >
               <Image
                 src={imageEditIco}
+                objectFit={"contain"}
+                alt={"table frame"}
+                p={2}
+                h={"100%"}
+              />
+            </Button>
+          </Tooltip>
+          <Tooltip content="Move Stack">
+            <Button
+              onClick={() => useImageOptionDrawer.setIsOpen(true)}
+              bgColor={"transparent"}
+              h={"full"}
+              p={0}
+              _hover={{ bgColor: "blackAlpha.400" }}
+            >
+              <Image
+                src={handGrabIco}
                 objectFit={"contain"}
                 alt={"table frame"}
                 p={2}
