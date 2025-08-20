@@ -1,6 +1,5 @@
-import { Box, Float, Image } from "@chakra-ui/react";
-import React from "react";
 import githubLogo from "#public/github.svg";
+import { Box, Float, Image } from "@chakra-ui/react";
 
 export const GithubReference = () => {
   return (

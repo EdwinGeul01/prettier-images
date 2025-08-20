@@ -44,7 +44,7 @@ export const useImageLoader = (imageUrl: string) => {
       window.removeEventListener("keyup", handleKeyUp);
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [imageUrl]);
+  }, [imageUrl, setOptionValues]);
 
   useEffect(() => {
     RefSpecialkeyState.current = speacialKeyStates;
