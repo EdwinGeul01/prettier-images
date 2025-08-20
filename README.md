@@ -4,7 +4,7 @@
 <img src="./public/simple-image-editor-white-bg.png" width="208">
 </p>
 
-- A very simple image editor to help you create can add some borders and background for your images.
+- A very simple image editor that helps you add borders and background colors to your images.
 
 ## Features
 
