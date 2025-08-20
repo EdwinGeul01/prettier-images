@@ -21,12 +21,15 @@ export const ImageUploadDialog = () => {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Dialog Title</Dialog.Title>
+              <Dialog.Title>Load</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-              <FileUploadForm />
+              <FileUploadForm
+                nextAction={() => {
+                  setOpenDialog(false);
+                }}
+              />
             </Dialog.Body>
-
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" onClick={handleClose} />
             </Dialog.CloseTrigger>

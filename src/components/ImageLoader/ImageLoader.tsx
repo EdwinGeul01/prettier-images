@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import { Group, Image, Layer, Stage } from "react-konva";
 import { useImageLoader } from "./useImageLoader";
+import useStoreImageOptions from "../../hook/useOptionsImage";
 
 interface ImageLoaderProps {
   imageUrl: string;
@@ -23,6 +24,9 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
     backgroundSize,
     Background,
   } = useImageLoader(imageUrl);
+  const { OptionSelected } = useStoreImageOptions();
+
+  const isDragging = speacialKeyStates.space || OptionSelected == 1;
 
   return (
     <Box h={"full"} boxSizing={"content-box"} overflow={"hidden"}>
@@ -31,17 +35,17 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({ imageUrl }) => {
         borderRadius={"10px"}
         overflow={"hidden"}
         zIndex={1000}
-        cursor={speacialKeyStates.space ? "grabbing" : "default"}
+        cursor={isDragging ? "grabbing" : "default"}
       >
         <Stage
           ref={stageRef}
           width={window.innerWidth}
           height={window.innerHeight}
-          draggable={speacialKeyStates.space}
+          draggable={isDragging}
           scale={Scale}
         >
           <Layer name="image-layer">
-            <Group draggable={!speacialKeyStates.space}>
+            <Group draggable={!isDragging}>
               {Background && (
                 <Background
                   x={(imageRef.current?.x() ?? 0) - backgroundSize}

@@ -1,14 +1,16 @@
-import { Box, Button, Flex, Float, Image } from "@chakra-ui/react";
-import { useMainContext } from "../../context/useMainContext";
 import tableFrame from "#public/TablerFrame.svg";
 import backgroundIco from "#public/backgroundIco.svg";
-import imageEditIco from "#public/toolIco.svg";
 import handGrabIco from "#public/handGrabIco.svg";
-import { Tooltip } from "../../components/Tooltip/Tooltip";
+import imageEditIco from "#public/toolIco.svg";
+import { Box, Flex, Float } from "@chakra-ui/react";
+import { useMainContext } from "../../context/useMainContext";
+import { OptionCard } from "./OptionCard";
+import useStoreImageOptions from "../../hook/useOptionsImage";
 
 export const OptionsBar = () => {
   const { useFramesDrawer, useBackgrounDrawer, useImageOptionDrawer } =
     useMainContext();
+  const { setOptionValues, OptionSelected } = useStoreImageOptions();
 
   return (
     <Float zIndex={10000} asChild placement={"bottom-center"} offsetY={10}>
@@ -25,74 +27,46 @@ export const OptionsBar = () => {
           justifyContent={"left"}
           alignItems={"start"}
         >
-          <Tooltip content="Frames">
-            <Button
-              onClick={() => useFramesDrawer.setIsOpen(true)}
-              bgColor={"transparent"}
-              h={"full"}
-              p={0}
-              _hover={{ bgColor: "blackAlpha.400" }}
-            >
-              <Image
-                src={tableFrame}
-                objectFit={"contain"}
-                alt={"table frame"}
-                p={2}
-                h={"100%"}
-              />
-            </Button>
-          </Tooltip>
-          <Tooltip content="background">
-            <Button
-              onClick={() => useBackgrounDrawer.setIsOpen(true)}
-              bgColor={"transparent"}
-              h={"full"}
-              p={0}
-              _hover={{ bgColor: "blackAlpha.400" }}
-            >
-              <Image
-                src={backgroundIco}
-                objectFit={"contain"}
-                alt={"table frame"}
-                p={2}
-                h={"100%"}
-              />
-            </Button>
-          </Tooltip>
-          <Tooltip content="Image Edit">
-            <Button
-              onClick={() => useImageOptionDrawer.setIsOpen(true)}
-              bgColor={"transparent"}
-              h={"full"}
-              p={0}
-              _hover={{ bgColor: "blackAlpha.400" }}
-            >
-              <Image
-                src={imageEditIco}
-                objectFit={"contain"}
-                alt={"table frame"}
-                p={2}
-                h={"100%"}
-              />
-            </Button>
-          </Tooltip>
-          <Tooltip content="Move Stack">
-            <Button
-              onClick={() => useImageOptionDrawer.setIsOpen(true)}
-              bgColor={"transparent"}
-              h={"full"}
-              p={0}
-              _hover={{ bgColor: "blackAlpha.400" }}
-            >
-              <Image
-                src={handGrabIco}
-                objectFit={"contain"}
-                alt={"table frame"}
-                p={2}
-                h={"100%"}
-              />
-            </Button>
-          </Tooltip>
+          <OptionCard
+            hoverText="hand grab"
+            icon={handGrabIco}
+            OptionNumber={1}
+            onClickAction={() => {
+              if (OptionSelected === 1) {
+                setOptionValues({
+                  OptionSelected: null,
+                });
+                return;
+              }
+              setOptionValues({
+                OptionSelected: 1,
+              });
+            }}
+          />
+          <OptionCard
+            hoverText="Frames"
+            icon={tableFrame}
+            OptionNumber={2}
+            onClickAction={() => {
+              useFramesDrawer.setIsOpen(true);
+            }}
+          />
+          <OptionCard
+            hoverText="Background"
+            icon={backgroundIco}
+            OptionNumber={3}
+            onClickAction={() => {
+              useBackgrounDrawer.setIsOpen(true);
+            }}
+          />
+          <OptionCard
+            hoverText="Image Properties"
+            icon={imageEditIco}
+            OptionNumber={4}
+            onClickAction={() => {
+              useImageOptionDrawer.setIsOpen(true);
+            }}
+          />
         </Flex>
       </Box>
     </Float>

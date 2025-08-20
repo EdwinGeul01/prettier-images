@@ -9,6 +9,7 @@ type OptionsImage = {
   backgroundSize: number;
   ImageRef: React.RefObject<Image | null> | null;
   Background: React.ElementType<React.ComponentProps<typeof Rect>> | null;
+  OptionSelected: number | null;
   setOptionValues: (values: Partial<OptionsImage>) => void;
 };
 
@@ -17,7 +18,8 @@ const useStoreImageOptions = create<OptionsImage>((set) => ({
   ImageUrl: null,
   backgroundSize: 100,
   Background: null,
-  ImageRef: null , 
+  ImageRef: null,
+  OptionSelected: null,
   setOptionValues: (values) => {
     set((prev) => ({
       ...prev,

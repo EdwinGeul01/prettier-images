@@ -7,8 +7,14 @@ import {
 import dragnAndDropIco from "#public/drag-and-drop.png";
 import useStoreImageOptions from "../../hook/useOptionsImage";
 
-export const FileUploadForm = () => {
-  const { ImageUrl, setOptionValues } = useStoreImageOptions();
+interface FileUploadFormProps {
+  nextAction?: () => void;
+}
+
+export const FileUploadForm: React.FC<FileUploadFormProps> = ({
+  nextAction,
+}) => {
+  const { setOptionValues } = useStoreImageOptions();
 
   const handleChangeImage = (fileChange: FileUploadFileChangeDetails) => {
     fileChange.acceptedFiles.forEach((file) => {
@@ -17,6 +23,9 @@ export const FileUploadForm = () => {
       setOptionValues({
         ImageUrl: image.src,
       });
+      if (nextAction) {
+        nextAction();
+      }
     });
   };
 
